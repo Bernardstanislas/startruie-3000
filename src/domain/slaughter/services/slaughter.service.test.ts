@@ -1,3 +1,4 @@
+import { Pig, PigId } from "../entities/pig.entity";
 import { SlaughterService } from "./slaughter.service";
 
 describe("The SlaughterService", () => {
@@ -11,8 +12,15 @@ describe("The SlaughterService", () => {
     });
 
     it("lists pigs to slaughter", async () => {
+        const spiderCochon = new Pig(
+            "spider-cochon" as PigId,
+            "Spider Cochon",
+            2
+        );
+        pigRepository.findAll.mockResolvedValue([spiderCochon]);
+
         const candidates = await service.listPigsToSlaughter();
 
-        expect(candidates).toEqual([]);
+        expect(candidates).toEqual([spiderCochon]);
     });
 });

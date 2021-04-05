@@ -5,6 +5,6 @@ export class SlaughterService {
     constructor(private readonly pigRepository: PigRepository) {}
 
     async listPigsToSlaughter(): Promise<Pig[]> {
-        return [];
+        return this.pigRepository.findAll();
     }
 }
