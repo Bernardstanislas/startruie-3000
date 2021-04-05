@@ -17,7 +17,8 @@ describe("The SlaughterService", () => {
             "Spider Cochon",
             2
         );
-        pigRepository.findAll.mockResolvedValue([spiderCochon]);
+        const peppaPig = new Pig("peppa" as PigId, "Peppa Pig", 0.3);
+        pigRepository.findAll.mockResolvedValue([spiderCochon, peppaPig]);
 
         const candidates = await service.listPigsToSlaughter();
 

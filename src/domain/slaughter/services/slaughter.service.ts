@@ -5,6 +5,7 @@ export class SlaughterService {
     constructor(private readonly pigRepository: PigRepository) {}
 
     async listPigsToSlaughter(): Promise<Pig[]> {
-        return this.pigRepository.findAll();
+        const pigs = await this.pigRepository.findAll();
+        return pigs.filter(({ age }) => age >= 0.5);
     }
 }
